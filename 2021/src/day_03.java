@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 public class day_03 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		// part1(reader);
+		//part1(reader);
 		part2(reader);
 	}
 
@@ -33,11 +33,11 @@ public class day_03 {
 		System.out.println((n1 * n2));
 	}
 
-	public static String toRemove(ArrayList<String> list, boolean bin) {
+	public static String toRemove(ArrayList<String> list, boolean oxygen) {
 		for (int i = 0; i < 12 && list.size() > 1; i++) {
 			int count = count(list, i);
 			int c = '1';
-			if ((bin && count < 0) || (!bin && count >= 0)) {
+			if (oxygen == count < 0) {
 				c = '0';
 			}
 			ArrayList<String> copy = new ArrayList<>();
@@ -78,18 +78,18 @@ public class day_03 {
 			}
 			n++;
 		}
-		String a = "", b = "";
+		String epsilon = "", gamma = "";
 		for (int i = 0; i < 12; i++) {
 			if (arr[i] * 2 < n) {
-				a += "0";
-				b += "1";
+				epsilon += "0";
+				gamma += "1";
 			} else {
-				b += "0";
-				a += "1";
+				gamma += "0";
+				epsilon += "1";
 			}
 		}
-		long n1 = Long.parseLong(a, 2);
-		long n2 = Long.parseLong(b, 2);
+		long n1 = Long.parseLong(epsilon, 2);
+		long n2 = Long.parseLong(gamma, 2);
 		System.out.println(n1 * n2);
 	}
 }
