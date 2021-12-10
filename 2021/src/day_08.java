@@ -34,17 +34,15 @@ public class day_08 {
 						arr[6] = s;
 					} else if (!contains(s, arr[4])) {
 						arr[0] = s;
-					} else if (arr[0] != null && arr[6] != null) {
-						arr[9] = s;
 					} else {
-						found = false;
-					}
+						arr[9] = s;
+					} 
 				} else if (s.length() == 5) {
 					if (contains(s, arr[1])) {
 						arr[3] = s;
 					} else if (arr[6] != null && contains(arr[6], s)) {
 						arr[5] = s;
-					} else if (arr[3] != null && arr[5] != null) {
+					} else if (arr[5] != null) {
 						arr[2] = s;
 					} else {
 						found = false;
