@@ -104,18 +104,13 @@ public class day_19 {
 	}
 
 	private static Point conmpare(HashSet<Point> a, HashSet<Point> b) {
-		HashMap<String, HashSet<String>> unique = new HashMap<>();
+		HashMap<String, Integer> unique = new HashMap<>();
 		for (Point p1 : a) {
 			for (Point p2 : b) {
 				Point p = p1.diff(p2);
 				String str = p.toString();
-				if (!unique.containsKey(str)) {
-					unique.put(str, new HashSet<>());
-				}
-
-				unique.get(str).add(p1.toString() + "a");
-				unique.get(str).add(p2.toString() + "b");
-				if (unique.get(str).size() >= 24) {
+				unique.put(str, unique.getOrDefault(str, 0) + 1);
+				if (unique.get(str) >= 12) {
 					return p;
 				}
 			}
